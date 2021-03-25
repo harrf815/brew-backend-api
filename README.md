@@ -1,24 +1,30 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Brew Project 
 
-Things you may want to cover:
+By: Harrf and Colin
 
-* Ruby version
+Models Relationship:
 
-* System dependencies
+User --< Feedback >--Breweries
 
-* Configuration
+Tables:
+ 
+User	Feedback	Breweries
+username	comments	Name, phone
+Password digest	rating	Brewery type, website url 
+Zip code		Street, state, city, zip code
+		Lat, long
+		
+3 attr.	2 attr. 	10 attr. 
 
-* Database creation
+User Stories:
 
-* Database initialization
+User can create an account
+User can add a comment 
+User can add a rating 
+User can see nearest breweries based on their location 
+User can delete their comments/ rating 
+User can edit their comments/ rating 
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
