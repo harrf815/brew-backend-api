@@ -8,19 +8,26 @@ def get_breweries
 file = open('./breweries.json')
 json = file.read
 parsed = JSON.parse(json)
+# binding.pry
 
 parsed.each do |brew|
+
+    if brew["latitude"] == nil|| brew["longitude"] == nil
+        brew["latitude"] = 1.1
+        brew["longitude"] = 1.1
+    end
+   
         Brewery.create(
-        name: brew[:name],
-        phone: brew[:phone],
-        brewery_type: brew[:brewery_type],
-        website_url: brew[:website_url],
-        street: [:street],
-        state: [:state],
-        city: [:city],
-        zip: [:postal_code],
-        lat: [:latitude],
-        long: [:longitude])
+        name: brew["name"],
+        phone: brew["phone"],
+        brewery_type: brew["brewery_type"],
+        website_url: brew["website_url"],
+        street: brew["street"],
+        state: brew["state"],
+        city: brew["city"],
+        zip: brew["postal_code"],
+        lat: brew["latitude"],
+        long: brew["longitude"])
     end
 end
 

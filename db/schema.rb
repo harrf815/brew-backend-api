@@ -17,15 +17,15 @@ ActiveRecord::Schema.define(version: 2021_03_25_224455) do
 
   create_table "breweries", force: :cascade do |t|
     t.string "name"
-    t.integer "phone"
+    t.bigint "phone"
     t.string "brewery_type"
     t.string "website_url"
     t.string "street"
     t.string "state"
     t.string "city"
-    t.integer "zip"
-    t.integer "lat"
-    t.integer "long"
+    t.bigint "zip"
+    t.decimal "lat"
+    t.decimal "long"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
