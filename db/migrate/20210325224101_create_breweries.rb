@@ -11,6 +11,7 @@ class CreateBreweries < ActiveRecord::Migration[6.1]
       t.bigint :zip
       t.numeric :lat
       t.numeric :long
+      t.integer :rating 
 
       t.timestamps
     end

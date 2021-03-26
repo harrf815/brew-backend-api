@@ -3,4 +3,8 @@ class BreweriesController < ApplicationController
         breweries = Brewery.all 
         render json: breweries
     end
+
+    def state
+        
+    end
 end

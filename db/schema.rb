@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_224455) do
     t.bigint "zip"
     t.decimal "lat"
     t.decimal "long"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
