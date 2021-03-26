@@ -20,7 +20,7 @@ parsed.each do |brew|
         city: [:city],
         zip: [:postal_code],
         lat: [:latitude],
-        long: [:longitude]
+        long: [:longitude])
     end
 end
 
