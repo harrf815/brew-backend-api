@@ -4,8 +4,7 @@ class BreweriesController < ApplicationController
         render json: breweries
     end
 
-    def show
-        state = Brewery.where(state: "Washington")
-        render json: state
+    def state
+        
     end
 end
