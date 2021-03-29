@@ -4,8 +4,9 @@ Rails.application.routes.draw do
       resources :feed_backs
       resources :breweries
       resources :users
-      post '/login', to: 'users#login'
-      get "/current_user", to: "users#get_user"
+      post '/login', to: 'auth#login'
+      post '/signup', to: 'users#create'
+      get "/current_user", to: "auth#show"
 
     end
   end
