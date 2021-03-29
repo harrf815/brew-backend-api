@@ -1,10 +1,10 @@
-class BreweriesController < ApplicationController
-    def index
-        breweries = Brewery.all 
-        render json: breweries
-    end
+# class BreweriesController < ApplicationController
+#     def index
+#         breweries = Brewery.all 
+#         render json: breweries
+#     end
 
-    def state
+#     def state
         
-    end
-end
+#     end
+# end
