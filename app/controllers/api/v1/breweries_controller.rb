@@ -1,4 +1,6 @@
 class Api::V1::BreweriesController < ApplicationController
+    skip_before_action :authorized
+
 
     #all breweries endpoint has a long load time
     def index
@@ -9,6 +11,11 @@ class Api::V1::BreweriesController < ApplicationController
     #used for all breweries by state
     def state  
         breweries = Brewery.all.where(state: params[:state])
+        render json: breweries
+    end
+
+    def washington  
+        breweries = Brewery.all.where(state: "Washington")
         render json: breweries
     end
 
