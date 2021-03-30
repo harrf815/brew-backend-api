@@ -6,23 +6,11 @@ class Api::V1::AuthController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       # issue that user a token\
-      token = issue_token(user)
-      render json: {user_id: user.id, username: user.username, jwt: token}
+      token = issue_token({user_id: user.id})
+      render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
     else
-      render json: {error: 'That user could not be found'}, status: 401
+      render json: {error: 'That user could not be found'}, status: :unauthorized
     end
   end
-
- 
-
-
-  # def show
-  #   user = User.find_by(id: user_id)
-  #   if user && logged_in?
-  #     render json: { id: user.id, username: user.username }
-  #   else
-  #     render json: {error: 'No user could be found, please create an account'}, status: 401
-  #   end
-  # end
 end
   
