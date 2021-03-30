@@ -5,13 +5,9 @@ Rails.application.routes.draw do
       resources :breweries
       resources :users
       post '/login', to: 'auth#login'
-      # post '/login', to: 'users#login'
       post '/signup', to: 'users#create'
-      # get "/current_user", to: "auth#show"
-      get "/washington", to: "breweries#washington"
-      get "/getuser", to: "users#getuser"
-      
+      get '/getuser', to: 'users#getuser'
+      get '/washington', to: 'breweries#washington'
     end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
