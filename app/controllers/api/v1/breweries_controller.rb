@@ -19,6 +19,12 @@ class Api::V1::BreweriesController < ApplicationController
         render json: breweries
     end
 
+    def states
+        states_unfiltered = Brewery.all.map{|brew| brew.state }.uniq
+        states = states_unfiltered.filter{|state| state.length > 1 }
+        render json: states
+    end
+
     private
     # will need to add strong params if going further with CRUD for breweries
 end
