@@ -17,6 +17,12 @@ class Api::V1::FeedBacksController < ApplicationController
         render json: feedback
     end
 
+    def update 
+        feedback = FeedBack.find(params[:id])
+        feedback.update(comments: params[:comments])
+        render json: feedback
+    end
+
     def destroy
         feedback = FeedBack.find(params[:id])
         feedback.destroy
@@ -26,6 +32,6 @@ class Api::V1::FeedBacksController < ApplicationController
     private
 
     def feedback_params
-        params.permit(:comments, :rating, :user_id, :brewery_id)
+        params.permit(:id, :comments, :rating, :user_id, :brewery_id)
     end
 end
