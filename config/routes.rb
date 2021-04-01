@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get '/getuser', to: 'users#getuser'
       get '/washington', to: 'breweries#washington'
       get '/:state', to: 'breweries#state'
+      get '/states', to: 'breweries#states'
       
     end
   end
