@@ -12,8 +12,7 @@ Rails.application.routes.draw do
       post '/signup', to: 'users#create'
       get '/getuser', to: 'users#getuser'
       get '/washington', to: 'breweries#washington'
-      get '/states', to: 'breweries#states'
-      # match '/feed_backs/breweries/'
+      get '/:state', to: 'breweries#state'
       
     end
   end
