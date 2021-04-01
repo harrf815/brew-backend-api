@@ -8,12 +8,12 @@ Rails.application.routes.draw do
       end
       resources :breweries
       resources :users
+      get '/getstates', to: 'breweries#getstates'
       post '/login', to: 'auth#login'
       post '/signup', to: 'users#create'
       get '/getuser', to: 'users#getuser'
       get '/washington', to: 'breweries#washington'
-      get '/states', to: 'breweries#states'
-      # match '/feed_backs/breweries/'
+      get '/:state', to: 'breweries#state'
       
     end
   end
