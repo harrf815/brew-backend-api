@@ -12,6 +12,12 @@ class Api::V1::FeedBacksController < ApplicationController
         render json: feedback
     end
 
+    def destroy
+        feedback = FeedBack.find(params[:id])
+        feedback.destroy
+        render json: {'message': 'Delete Successful'}
+    end
+
     private
 
     def feedback_params
