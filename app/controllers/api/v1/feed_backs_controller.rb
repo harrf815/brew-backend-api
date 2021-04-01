@@ -7,6 +7,11 @@ class Api::V1::FeedBacksController < ApplicationController
         render json: feedbacks
     end
 
+    def show 
+        feedback = FeedBack.find(params[:id])
+        render json: feedback
+    end
+
     def create 
         feedback = FeedBack.create(feedback_params)
         render json: feedback
