@@ -1,25 +1,31 @@
 require 'rest-client'
 require 'json'
 require 'pry'
+require 'faker'
 
-Brewery.destroy_all
-User.destroy_all
-FeedBack.destroy_all
+# User.destroy_all
+# FeedBack.destroy_all
+# Brewery.destroy_all
+
+
+10.times do 
+    name = Faker::Movies::PrincessBride.character
+    User.create(username: name.split(' ').join(','), password: "1234")
+end
 
 def get_breweries
- #gets info from api 
-file = open('./breweries.json')
-json = file.read
-parsed = JSON.parse(json)
-# binding.pry
-
-parsed.each do |brew|
-
-    if brew["latitude"] == nil|| brew["longitude"] == nil
-        brew["latitude"] = 1.1
-        brew["longitude"] = 1.1
-    end
-        Brewery.create(
+    #gets info from api 
+    file = open('./newbreweries.json')
+    json = file.read
+    parsed = JSON.parse(json)
+    # binding.pry
+    
+    random = User.all.sample
+    comments = ["Meh.", "Yeedawgy.", "They got dollar shots, so...", "Beer was beer I guess", "Would I go back? Maybe"]
+    
+    
+    parsed.each do |brew|
+       newbrew = Brewery.create(
             name: brew["name"],
             phone: brew["phone"],
             brewery_type: brew["brewery_type"],
@@ -30,8 +36,9 @@ parsed.each do |brew|
             zip: brew["postal_code"],
             lat: brew["latitude"],
             long: brew["longitude"]
-        )
-        
+        )  
+    
+        FeedBack.create(comments: comments.sample, rating: rand(1..5), user_id: User.all.sample[:id],brewery_id: newbrew[:id])
     end
 end
 
