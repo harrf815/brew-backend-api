@@ -1,24 +1,33 @@
+#! Seeding Instructions:
+#? Before seeding the database:
+    # Run bundle install in the terminal to ensure all gem dependencies are met. 
+    # Postgresql must be installed and running.
+
+#? seeding the database:
+    # If this is your first time seeding: 
+        # rails db:create
+        # rails db:migrate
+        # rails db:seed
+    # Else if existing database:
+        # rails db:reset #!this will drop, create, run migrations and seed#!
+
 require 'rest-client'
 require 'json'
 require 'pry'
 require 'faker'
 
-# User.destroy_all
-# FeedBack.destroy_all
-# Brewery.destroy_all
 
-
-10.times do 
-    name = Faker::Movies::PrincessBride.character
-    User.create(username: name.split(' ').join(','), password: "1234")
+def seed_characters
+    10.times do 
+        name = Faker::Movies::PrincessBride.character
+        User.create(username: name.split(' ').join(','), password: "1234")
+    end
 end
 
-def get_breweries
-    #gets info from api 
-    file = open('./newbreweries.json')
+def seed_breweries
+    file = open('./db/seeding/newbreweries.json')
     json = file.read
     parsed = JSON.parse(json)
-    # binding.pry
     
     random = User.all.sample
     comments = ["Meh.", "Yeedawgy.", "They got dollar shots, so...", "Beer was beer I guess", "Would I go back? Maybe"]
@@ -42,4 +51,6 @@ def get_breweries
     end
 end
 
-get_breweries
+seed_characters
+seed_breweries
+

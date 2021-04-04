@@ -25,8 +25,7 @@ class Api::V1::BreweriesController < ApplicationController
     end
 
     def getstates
-        states_unfiltered = Brewery.all.map{|brew| brew.state }.uniq
-        states = states_unfiltered.filter{|state| state.length > 1 }
+        states = Brewery.all.map{|brew| brew.state }.uniq.compact.sort
         render json: states
     end
 
